@@ -18,8 +18,8 @@ public class CorsConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
 
-                registry.addMapping("/**") // ✅ safer than /api/**
-                        .allowedOrigins(allowedOrigin)
+                registry.addMapping("/**")
+                        .allowedOriginPatterns(allowedOrigin.split(","))
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
