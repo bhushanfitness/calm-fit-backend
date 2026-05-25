@@ -8,9 +8,11 @@ import com.calmfit.calm_fit.routine.repository.RoutineDayExerciseRepository;
 import com.calmfit.calm_fit.routine.repository.RoutineDayRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
 
 @Component
+@Profile("dev")
 @RequiredArgsConstructor
 public class RoutineDataSeeder implements CommandLineRunner {
 
@@ -21,7 +23,7 @@ public class RoutineDataSeeder implements CommandLineRunner {
         @Override
         public void run(String... args) {
                 if (routineDayRepository.count() > 0) {
-                        return; // already seeded
+                        return;
                 }
 
                 RoutineDay day1 = routineDayRepository.save(
