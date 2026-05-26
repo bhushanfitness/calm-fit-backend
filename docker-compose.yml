@@ -30,6 +30,7 @@ services:
       - postgres
       - redis
     environment:
+      SPRING_PROFILES_ACTIVE: dev
       SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/calmfit_db
       SPRING_DATASOURCE_USERNAME: calmfit
       SPRING_DATASOURCE_PASSWORD: calmfit123
