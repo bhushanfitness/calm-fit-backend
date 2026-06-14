@@ -22,55 +22,65 @@ public class RoutineDataSeeder implements CommandLineRunner {
 
         @Override
         public void run(String... args) {
+
                 if (routineDayRepository.count() > 0) {
                         return;
                 }
 
                 RoutineDay day1 = routineDayRepository.save(
                                 RoutineDay.builder().dayNumber(1).name("Day 1").build());
+
                 RoutineDay day2 = routineDayRepository.save(
                                 RoutineDay.builder().dayNumber(2).name("Day 2").build());
+
                 RoutineDay day3 = routineDayRepository.save(
                                 RoutineDay.builder().dayNumber(3).name("Day 3").build());
+
                 RoutineDay day4 = routineDayRepository.save(
                                 RoutineDay.builder().dayNumber(4).name("Day 4").build());
+
                 RoutineDay day5 = routineDayRepository.save(
                                 RoutineDay.builder().dayNumber(5).name("Day 5").build());
 
-                addExerciseToDay(day1, 1, "Bench Press", "Chest");
-                addExerciseToDay(day1, 2, "Incline DB Press", "Chest");
-                addExerciseToDay(day1, 3, "Shoulder Press", "Shoulder");
-                addExerciseToDay(day1, 4, "Lateral Raise", "Shoulder");
-                addExerciseToDay(day1, 5, "Tricep Pushdown", "Triceps");
-                addExerciseToDay(day1, 6, "Overhead Extension", "Triceps");
+                // Day 1 - Chest + Shoulder + Triceps
+                addExerciseToDay(day1, 1, "Incline DB Press", "Chest");
+                addExerciseToDay(day1, 2, "Barbell Bench Press", "Chest");
+                addExerciseToDay(day1, 3, "Overhead Press", "Shoulder");
+                addExerciseToDay(day1, 4, "Arnold Press", "Shoulder");
+                addExerciseToDay(day1, 5, "Overhead Extension", "Triceps");
+                addExerciseToDay(day1, 6, "Cable Pushdown", "Triceps");
 
-                addExerciseToDay(day2, 1, "Pull Ups", "Back");
+                // Day 2 - Back + Biceps + Shoulder
+                addExerciseToDay(day2, 1, "Pull Up", "Back");
                 addExerciseToDay(day2, 2, "Lat Pulldown", "Back");
                 addExerciseToDay(day2, 3, "Barbell Row", "Back");
-                addExerciseToDay(day2, 4, "Barbell Curl", "Biceps");
-                addExerciseToDay(day2, 5, "Hammer Curl", "Biceps");
-                addExerciseToDay(day2, 6, "Rear Delt Fly", "Rear Delt");
+                addExerciseToDay(day2, 4, "Incline Dumbbell Curl", "Biceps");
+                addExerciseToDay(day2, 5, "Preacher Curl", "Biceps");
+                addExerciseToDay(day2, 6, "Lateral Raise", "Shoulder");
 
+                // Day 3 - Legs
                 addExerciseToDay(day3, 1, "Squat", "Legs");
                 addExerciseToDay(day3, 2, "Leg Press", "Legs");
                 addExerciseToDay(day3, 3, "Leg Extension", "Legs");
                 addExerciseToDay(day3, 4, "Leg Curl", "Legs");
-                addExerciseToDay(day3, 5, "Standing Calf Raise", "Calves");
-                addExerciseToDay(day3, 6, "Seated Calf Raise", "Calves");
+                addExerciseToDay(day3, 5, "Seated Calf Raise", "Calves");
+                addExerciseToDay(day3, 6, "Standing Calf Raise", "Calves");
 
+                // Day 4 - Chest + Back
                 addExerciseToDay(day4, 1, "Chest Fly", "Chest");
-                addExerciseToDay(day4, 2, "Dips", "Chest");
-                addExerciseToDay(day4, 3, "Seated Row", "Back");
-                addExerciseToDay(day4, 4, "Face Pull", "Rear Delt");
-                addExerciseToDay(day4, 5, "Dumbbell Shoulder Press", "Shoulder");
-                addExerciseToDay(day4, 6, "Shrugs", "Traps");
+                addExerciseToDay(day4, 2, "Chest Dips", "Chest");
+                addExerciseToDay(day4, 3, "Seated Cable Row", "Back");
+                addExerciseToDay(day4, 4, "Straight Arm Pulldown", "Back");
+                addExerciseToDay(day4, 5, "Rear Delt Fly", "Back");
+                addExerciseToDay(day4, 6, "Face Pull", "Back");
 
+                // Day 5 - Legs + Arms
                 addExerciseToDay(day5, 1, "Deadlift", "Legs");
-                addExerciseToDay(day5, 2, "Leg Extension", "Legs");
-                addExerciseToDay(day5, 3, "Leg Curl", "Legs");
-                addExerciseToDay(day5, 4, "Preacher Curl", "Biceps");
-                addExerciseToDay(day5, 5, "Incline Curl", "Biceps");
-                addExerciseToDay(day5, 6, "Tricep Rope Pushdown", "Triceps");
+                addExerciseToDay(day5, 2, "Walking Lunges", "Legs");
+                addExerciseToDay(day5, 3, "Hip Abductor", "Legs");
+                addExerciseToDay(day5, 4, "Hammer Curl", "Biceps");
+                addExerciseToDay(day5, 5, "Cable Curl", "Biceps");
+                addExerciseToDay(day5, 6, "Bench Dips", "Triceps");
         }
 
         private void addExerciseToDay(RoutineDay day, int order, String name, String muscleGroup) {
