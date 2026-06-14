@@ -25,13 +25,30 @@ public class ExerciseLogService {
                 Exercise exercise = exerciseRepository.findById(request.getExerciseId())
                                 .orElseThrow(() -> new RuntimeException("Exercise not found"));
 
-                ExerciseLog log = ExerciseLog.builder()
-                                .userId(userId)
-                                .exercise(exercise)
-                                .weight(request.getWeight())
-                                .reps(request.getReps())
-                                .logDate(LocalDate.now())
-                                .build();
+                LocalDate today = LocalDate.now();
+
+                ExerciseLog log = exerciseLogRepository
+                                .findByUserIdAndExerciseIdAndRepsAndLogDate(
+                                                userId,
+                                                request.getExerciseId(),
+                                                request.getReps(),
+                                                today)
+                                .orElse(null);
+
+                if (log == null) {
+
+                        log = ExerciseLog.builder()
+                                        .userId(userId)
+                                        .exercise(exercise)
+                                        .weight(request.getWeight())
+                                        .reps(request.getReps())
+                                        .logDate(today)
+                                        .build();
+
+                } else {
+
+                        log.setWeight(request.getWeight());
+                }
 
                 ExerciseLog saved = exerciseLogRepository.save(log);
 
