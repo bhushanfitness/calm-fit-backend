@@ -65,7 +65,7 @@ public class ExerciseLogController {
         return exerciseLogService.getStrengthProgress(userId, exerciseId);
     }
 
-    @GetMapping("/api/strength")
+    @GetMapping("/strength")
     public StrengthResponse getStrength() {
 
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
